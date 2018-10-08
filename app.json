@@ -1,0 +1,14 @@
+{
+  "pages":[
+    "example/index",
+    "example/child"
+  ],
+  "window":{
+    "navigationStyle": "custom",
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "自定义导航栏",
+    "navigationBarTextStyle":"white"
+  },
+  "debug": true
+}
