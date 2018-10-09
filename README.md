@@ -21,12 +21,12 @@ app.json配置以下属性
 > 额外说明：小程序右上角胶囊颜色，可通过navigationBarTextStyle设置，支持black和white。
 > 为了提高兼容性，建议把所有页面内容写在设置的页面容器里，参考example。
 ## 组件自定义属性说明
-| 属性  | 说明       | 类型   | 默认值 |
-| ----- | ---------- | ------ | ------ |
-| title | 标题 | String | none  |
-| color | 标题字体颜色 | String | #000000  |
-| fontSize | 导航栏字体大小，单位rpx、px | String | 40rpx  |
-| background | 导航栏背景颜色 | String | #ffffff  |
-| placeholderBg | 导航栏占位栏背景色 | String | transparent  |
-| back | 是否显示导航栏返回按钮 | Boolean | false  |
-| fixed | 导航栏是否fixed定位置顶 | Boolean | true  |
+| 属性          | 说明                        | 类型    | 默认值      |
+| ------------- | --------------------------- | ------- | ----------- |
+| title         | 标题                        | String  | none        |
+| color         | 标题字体颜色                | String  | #000000     |
+| fontSize      | 导航栏字体大小，单位rpx、px | String  | 40rpx       |
+| background    | 导航栏背景颜色              | String  | #ffffff     |
+| placeholderBg | 导航栏占位栏背景色          | String  | transparent |
+| back          | 是否显示导航栏返回按钮      | Boolean | false       |
+| fixed         | 导航栏是否fixed定位置顶     | Boolean | true        |
