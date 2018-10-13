@@ -1,6 +1,6 @@
 <view>
   <navigationBar id="navigationBar" placeholderBg="{{barBg}}" color="{{color}}" title="{{title}}" back="{{true}}" background="{{barBg}}" fixed="{{fixed}}"></navigationBar>
-  <view id="container">
+  <view id="container" bindtouchstart='touchstart' bindtouchend='touchend' style='height:200vh;'>
   	<view style="position:absolute;top:0;left:0;">页面容器</view>
   </view>
 </view>

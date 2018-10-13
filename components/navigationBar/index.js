@@ -78,7 +78,8 @@ Component({
     // 这里是一些组件内部数据
     height: 44,//导航栏高度,
     paddingTop: 20,//导航栏上内边距对应状态栏高度
-    showHomeButton: false,//是否显示返回首页按钮
+    showHomeButton: false,//是否显示返回首页
+    show: true,//是否显示导航栏
   },
   attached: function(option){
     //检测首页是否在当前页面栈中
@@ -104,7 +105,7 @@ Component({
       paddingTop: pt,
       showHomeButton: showHomeButton
     })
-    // console.log(pages);
+    console.log(this);
   },
   methods: {
     // 这里是一个自定义方法
@@ -118,6 +119,18 @@ Component({
     },
     navigateBackHome(){
       wx.reLaunch({url:'/'+__wxConfig.pages[0]})
+    },
+    /**
+     * 切换导航栏显示
+      */
+    toggleShow(){
+      !this.data.show && this.setData({show: true});
+    },
+    /**
+     * 切换导航栏隐藏
+      */
+    toggleHide() {
+      this.data.show && this.setData({ show: false });
     }
   }
 })
