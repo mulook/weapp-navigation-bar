@@ -124,13 +124,17 @@ Component({
      * 切换导航栏显示
       */
     toggleShow(){
-      !this.data.show && this.setData({show: true});
+      if(!this.data.show){
+        this.setData({ show: true });
+      }
     },
     /**
      * 切换导航栏隐藏
       */
     toggleHide() {
-      this.data.show && this.setData({ show: false });
+      if (this.data.show) {
+        this.setData({ show: false });
+      }
     }
   }
 })

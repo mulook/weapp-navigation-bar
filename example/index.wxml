@@ -5,5 +5,6 @@
   	<navigator url="/example/child"><button style="margin-top:20rpx;width:500rpx">跳子页</button></navigator>
   	<button style="margin-top:20rpx;width:500rpx" bindtap="shareEnter">模拟从分享进入小程序</button>
   	<navigator url="/example/child?nofixed=1"><button style="margin-top:20rpx;width:500rpx">不置顶跟随页面滚动</button></navigator>
+    <navigator url="/example/child?toggleBarShow=1"><button style="margin-top:20rpx;width:500rpx">滚动30像素切换显示隐藏</button></navigator>
   </view>
 </view>
