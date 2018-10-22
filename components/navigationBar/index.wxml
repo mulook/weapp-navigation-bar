@@ -1,4 +1,4 @@
-<view class="navigation-bar" style="padding-top:{{paddingTop}}px;height:{{height}}px;line-height:{{height}}px;background:{{background}};color:{{color}};font-size:{{fontSize}};position:{{fixed&&'fixed'}};transform:translateY({{!show?'-64px':'0'}});">
+<view class="navigation-bar" style="padding-top:{{paddingTop}}px;height:{{height}}px;line-height:{{height}}px;background:{{background}};color:{{color}};font-size:{{fontSize}};position:{{fixed&&'fixed'}};transform:translateY({{!show?-paddingTop-height+'px':'0'}});">
 	<view class="back" wx:if="{{back}}" style="padding-top:{{paddingTop}}px;height:{{height}}px;line-height:{{height}}px;" bind:tap="navigateBack">
 		<view class="icon-fanhui"></view>
 		<view class="back-home" wx:if="{{showHomeButton}}" style="">首页</view>
