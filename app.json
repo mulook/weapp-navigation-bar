@@ -1,14 +1,15 @@
 {
-  "pages":[
+  "pages": [
     "example/index",
     "example/child"
   ],
-  "window":{
+  "window": {
     "navigationStyle": "custom",
-    "backgroundTextStyle":"light",
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "自定义导航栏",
-    "navigationBarTextStyle":"white"
+    "navigationBarTextStyle": "black"
   },
-  "debug": true
+  "debug": true,
+  "sitemapLocation": "sitemap.json"
 }

@@ -4,8 +4,8 @@ Page({
    */
   data: {
     title: '标题',
-    barBg: 'red',
-    color: '#ffffff'
+    barBg: '#f8f8f8',//#ff6600
+    color: '#000000'//#ffffff
   },
 
   /**

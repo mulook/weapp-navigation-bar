@@ -1,10 +1,12 @@
 <view>
-  <navigationBar id="navigationBar" placeholderBg="{{barBg}}" color="{{color}}" title="{{title}}" back="{{false}}" background="{{barBg}}"></navigationBar>
+  <navigationBar id="navigationBar" color="{{color}}" title="{{title}}" back="{{false}}" background="{{barBg}}"></navigationBar>
   <view id="container">
   	<view style="position:absolute;top:0;left:0;">页面容器</view>
   	<navigator url="/example/child"><button style="margin-top:20rpx;width:500rpx">跳子页</button></navigator>
-  	<button style="margin-top:20rpx;width:500rpx" bindtap="shareEnter">模拟从分享进入小程序</button>
+  	<button style="margin-top:20rpx;width:500rpx" bindtap="shareEnter">模拟非首页启动小程序</button>
   	<navigator url="/example/child?nofixed=1"><button style="margin-top:20rpx;width:500rpx">不置顶跟随页面滚动</button></navigator>
     <navigator url="/example/child?toggleBarShow=1"><button style="margin-top:20rpx;width:500rpx">滚动30像素切换显示隐藏</button></navigator>
+  	<navigator url="/example/child?backConfirm=1"><button style="margin-top:20rpx;width:500rpx">返回页面前弹窗确认</button></navigator>
+  	<navigator url="/example/child?backStyle=simple"><button style="margin-top:20rpx;width:500rpx">简单风格的返回按钮</button></navigator>
   </view>
 </view>

@@ -1,4 +1,7 @@
 # weapp-navigation-bar
+## v1.1.0
+1. 增加normal风格的返回按钮，旧版本的定义为simple风格，支持两种风格切换。
+2. 点击返回按钮，退出页面前支持弹窗确认，简单实现，不打算增加事件交互，增加该组件的复杂度。[ISSUE #6](https://github.com/mulook/weapp-navigation-bar/issues/6)
 ## v1.0.2
 1. 修复安卓系统下，页面滚动指定距离，切换导航栏隐藏不全的问题。[ISSUE #3](https://github.com/mulook/weapp-navigation-bar/issues/3)
 ## v1.0.1

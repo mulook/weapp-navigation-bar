@@ -4,11 +4,13 @@ Page({
    */
   data: {
     title: '子页面',
-    barBg: '#ff6600',
+    barBg: '#f8f8f8',//#ff6600
     fixed: true,
-    color: '#ffffff',
+    color: '#000000',//#ffffff
     touchStartY: 0,//触摸开始的Y坐标
     toggleBarShow: false,
+    backConfirm: false,
+    backStyle: 'normal'
   },
   onLoad: function (options) {
     console.log(options);
@@ -22,6 +24,12 @@ Page({
     }
     if(options.toggleBarShow){
       obj.toggleBarShow = true;
+    }
+    if (options.backConfirm) {
+      obj.backConfirm = true;
+    }
+    if (options.backStyle) {
+      obj.backStyle = options.backStyle;
     }
     this.setData(obj);
   },

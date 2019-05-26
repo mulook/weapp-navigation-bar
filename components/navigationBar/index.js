@@ -40,7 +40,7 @@ Component({
     },
     fontSize: {//导航栏字大小
       type: String,
-      value: '40rpx',//默认
+      value: '16px',//默认
       observer: function(newVal,oldVal,changedPath){
         if(!newVal){
           let obj = {};
@@ -73,6 +73,54 @@ Component({
         }
       }
     },
+    backStyle: {//导航栏返回按钮的风格
+      type: String,
+      value: 'normal', //默认值 可赋值simple或者normal
+      observer: function (newVal, oldVal, changedPath) {
+        // console.log(newVal,oldVal,changedPath);
+        if (!newVal) {
+          let obj = {};
+          obj[changedPath[0]] = oldVal;
+          this.setData(obj);
+        }
+      }
+    },
+    backConfirm: {//返回是否需要确认
+      type: Boolean,
+      value: false, //默认
+      observer: function (newVal, oldVal, changedPath) {
+        // console.log(newVal,oldVal,changedPath);
+        if (newVal !== false && newVal !== true) {
+          let obj = {};
+          obj[changedPath[0]] = oldVal;
+          this.setData(obj);
+        }
+      }
+    },
+    backConfirmTitle: {//提示弹窗的标题
+      type: String,
+      value: '提示', //默认值
+      observer: function (newVal, oldVal, changedPath) {
+        // console.log(newVal,oldVal,changedPath);
+        if (!newVal) {
+          let obj = {};
+          obj[changedPath[0]] = oldVal;
+          this.setData(obj);
+        }
+      }
+    },
+    backConfirmContent: {//提示弹窗的内容
+      type: String,
+      value: '确定要退出当前页面吗？', //默认值
+      observer: function (newVal, oldVal, changedPath) {
+        // console.log(newVal,oldVal,changedPath);
+        if (!newVal) {
+          let obj = {};
+          obj[changedPath[0]] = oldVal;
+          this.setData(obj);
+        }
+      }
+    },
   },
   data: {
     // 这里是一些组件内部数据
@@ -80,6 +128,7 @@ Component({
     paddingTop: 20,//导航栏上内边距对应状态栏高度
     showHomeButton: false,//是否显示返回首页
     show: true,//是否显示导航栏
+    navigationBarTextStyle: 'black'
   },
   attached: function(option){
     //检测首页是否在当前页面栈中
@@ -100,25 +149,66 @@ Component({
         pt = systemInfo.statusBarHeight;
         h = 48;
     }
+    var navigationBarTextStyle = __wxConfig.global.window.navigationBarTextStyle;//获取当前项目导航栏文本风格
     this.setData({
       height: h,
       paddingTop: pt,
-      showHomeButton: showHomeButton
+      showHomeButton: showHomeButton,
+      navigationBarTextStyle: navigationBarTextStyle
     })
     console.log(this);
   },
   methods: {
     // 这里是一个自定义方法
+    /**
+     * 返回上一页
+     */
     navigateBack(){
+      let self = this;
+      if (!self.properties.backConfirm){
+        self.runBack();
+        return;
+      }
+      wx.showModal({
+        title: self.properties.backConfirmTitle,
+        content: self.properties.backConfirmContent,
+        success(res) {
+          res.confirm && self.runBack()
+        }
+      })
+    },
+    runBack(){
       let pages = getCurrentPages();
-      if(pages.length < 2 && pages[0].route != __wxConfig.pages[0]){
-        wx.reLaunch({url:'/'+__wxConfig.pages[0]})
-      }else{
-        wx.navigateBack({delta:1});
+      if (pages.length < 2 && pages[0].route != __wxConfig.pages[0]) {
+        wx.reLaunch({ url: '/' + __wxConfig.pages[0] })
+      } else {
+        wx.navigateBack({ delta: 1 });
       }
     },
+    /**
+     * 返回首页
+     */
     navigateBackHome(){
-      wx.reLaunch({url:'/'+__wxConfig.pages[0]})
+      let self = this;
+      if (!self.properties.backConfirm) {
+        self.runBackHome();
+        return;
+      }
+      wx.showModal({
+        title: self.properties.backConfirmTitle,
+        content: self.properties.backConfirmContent,
+        success(res) {
+          res.confirm && self.runBackHome()
+        }
+      })
+    },
+    runBackHome() {
+      let pages = getCurrentPages();
+      if (pages[0].route === __wxConfig.pages[0]) {
+        wx.navigateBack({ delta: 10 });
+      } else {
+        wx.reLaunch({ url: '/' + __wxConfig.pages[0] })
+      }
     },
     /**
      * 切换导航栏显示

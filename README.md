@@ -9,8 +9,9 @@
 
 ## 演示
 1 自定义导航栏
-
+   <img widt="375" src="https://raw.githubusercontent.com/mulook/weapp-navigation-bar/master/assets/example5.gif">
    <img widt="375" src="https://raw.githubusercontent.com/mulook/weapp-navigation-bar/master/assets/example1.gif">
+   <img widt="375" src="https://raw.githubusercontent.com/mulook/weapp-navigation-bar/master/assets/example6.gif">
 
 2 模拟非首页启动小程序
 
@@ -23,6 +24,10 @@
 4 页面上下滚动指定像素值，切换导航栏的显示或隐藏
 
    <img widt="375" src="https://raw.githubusercontent.com/mulook/weapp-navigation-bar/master/assets/example4.gif">
+
+5 可添加退出页面提示弹窗
+
+   <img widt="375" src="https://raw.githubusercontent.com/mulook/weapp-navigation-bar/master/assets/example7.gif">
    
 ## 使用说明
 使用前需要了解[小程序自定义组件](https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/)和[自定义导航栏](https://developers.weixin.qq.com/miniprogram/dev/framework/config.html#window)。
@@ -46,8 +51,12 @@ app.json配置以下属性
 | ------------- | --------------------------- | ------- | ----------- |
 | title         | 标题                        | String  | none        |
 | color         | 标题字体颜色                | String  | #000000     |
-| fontSize      | 导航栏字体大小，单位rpx、px | String  | 40rpx       |
+| fontSize      | 导航栏字体大小，单位rpx、px | String  | 16px       |
 | background    | 导航栏背景颜色              | String  | #ffffff     |
 | placeholderBg | 导航栏占位栏背景色          | String  | transparent |
 | back          | 是否显示导航栏返回按钮      | Boolean | false       |
 | fixed         | 导航栏是否fixed定位置顶     | Boolean | true        |
+| backStyle     | 导航栏返回按钮的风格支持simple和normal| String  | normal |
+| backConfirm   | 退出页面是否需要弹窗确认      | Boolean | false       |
+| backConfirmTitle| 提示弹窗的标题     | String | 提示        |
+| backConfirmContent| 提示弹窗的内容     | String | 确定要退出当前页面吗？|
