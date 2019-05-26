@@ -60,6 +60,5 @@ app.json配置以下属性
 | back          | 是否显示导航栏返回按钮      | Boolean | false       |
 | fixed         | 导航栏是否fixed定位置顶     | Boolean | true        |
 | backStyle     | 导航栏返回按钮的风格支持simple和normal| String  | normal |
-| backConfirm   | 退出页面是否需要弹窗确认      | Boolean | false       |
-| backConfirmTitle| 提示弹窗的标题     | String | 提示        |
-| backConfirmContent| 提示弹窗的内容     | String | 确定要退出当前页面吗？|
+| backEvent   | 是否绑定返回按钮事件      | Boolean | false       |
+| backHomeEvent   | 是否绑定返回首页按钮事件      | Boolean | false       |
