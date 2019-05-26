@@ -25,9 +25,12 @@
 
    <img widt="375" src="https://raw.githubusercontent.com/mulook/weapp-navigation-bar/master/assets/example4.gif">
 
-5 可添加退出页面提示弹窗
+5 绑定返回按钮事件
 
-   <img widt="375" src="https://raw.githubusercontent.com/mulook/weapp-navigation-bar/master/assets/example7.gif">
+   <img widt="375" src="https://raw.githubusercontent.com/mulook/weapp-navigation-bar/master/assets/example8.gif">
+6 绑定返回首页按钮事件
+
+   <img widt="375" src="https://raw.githubusercontent.com/mulook/weapp-navigation-bar/master/assets/example9.gif">
    
 ## 使用说明
 使用前需要了解[小程序自定义组件](https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/)和[自定义导航栏](https://developers.weixin.qq.com/miniprogram/dev/framework/config.html#window)。

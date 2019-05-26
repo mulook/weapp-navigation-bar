@@ -9,8 +9,9 @@ Page({
     color: '#000000',//#ffffff
     touchStartY: 0,//触摸开始的Y坐标
     toggleBarShow: false,
-    backConfirm: false,
-    backStyle: 'normal'
+    backStyle: 'normal',
+    backEvent: false,
+    backHomeEvent: false
   },
   onLoad: function (options) {
     console.log(options);
@@ -25,11 +26,14 @@ Page({
     if(options.toggleBarShow){
       obj.toggleBarShow = true;
     }
-    if (options.backConfirm) {
-      obj.backConfirm = true;
-    }
     if (options.backStyle) {
       obj.backStyle = options.backStyle;
+    }
+    if (options.backHomeEvent) {
+      obj.backHomeEvent = true;
+    }
+    if (options.backEvent) {
+      obj.backEvent = true;
     }
     this.setData(obj);
   },
@@ -68,5 +72,35 @@ Page({
       title: '分享标题',
       path: '/exmaple/child?title=来自分享页'
     }
+  },
+  /**
+   * 返回按钮触发事件
+   * @param {Object} e 事件对象
+   */
+  backEvent(e){
+    // 这里可以写点击返回按钮相关的业务逻辑，下面逻辑提供参考
+    let self = this;
+    wx.showModal({
+      title: '提示，触发返回按钮事件',
+      content: '确定要退出当前页面吗？',
+      success(res) {
+        res.confirm && self.selectComponent('#navigationBar').runBack();//这里之所以调用了组件内部的返回上一页的方法，因为里面有判断逻辑，不想调用可以自行处理
+      }
+    })
+  },
+  /**
+   * 返回按钮触发事件
+   * @param {Object} e 事件对象
+   */
+  backHomeEvent(e) {
+    // 这里可以写点击返回首页按钮相关的业务逻辑，下面逻辑提供参考
+    let self = this;
+    wx.showModal({
+      title: '提示，触发返回首页按钮事件',
+      content: '确定要退出当前页面吗？',
+      success(res) {
+        res.confirm && self.selectComponent('#navigationBar').runBackHome();//这里之所以调用了组件内部的返回首页的方法，因为里面有判断逻辑，不想调用可以自行处理
+      }
+    })
   }
 });

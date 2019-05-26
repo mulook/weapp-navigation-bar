@@ -85,7 +85,7 @@ Component({
         }
       }
     },
-    backConfirm: {//返回是否需要确认
+    backEvent: {//是否绑定返回按钮事件
       type: Boolean,
       value: false, //默认
       observer: function (newVal, oldVal, changedPath) {
@@ -97,24 +97,12 @@ Component({
         }
       }
     },
-    backConfirmTitle: {//提示弹窗的标题
-      type: String,
-      value: '提示', //默认值
+    backHomeEvent: {//是否绑定返回首页按钮事件
+      type: Boolean,
+      value: false, //默认
       observer: function (newVal, oldVal, changedPath) {
         // console.log(newVal,oldVal,changedPath);
-        if (!newVal) {
-          let obj = {};
-          obj[changedPath[0]] = oldVal;
-          this.setData(obj);
-        }
-      }
-    },
-    backConfirmContent: {//提示弹窗的内容
-      type: String,
-      value: '确定要退出当前页面吗？', //默认值
-      observer: function (newVal, oldVal, changedPath) {
-        // console.log(newVal,oldVal,changedPath);
-        if (!newVal) {
+        if (newVal !== false && newVal !== true) {
           let obj = {};
           obj[changedPath[0]] = oldVal;
           this.setData(obj);
@@ -164,18 +152,11 @@ Component({
      * 返回上一页
      */
     navigateBack(){
-      let self = this;
-      if (!self.properties.backConfirm){
-        self.runBack();
+      if (!this.properties.backEvent){
+        this.runBack();
         return;
       }
-      wx.showModal({
-        title: self.properties.backConfirmTitle,
-        content: self.properties.backConfirmContent,
-        success(res) {
-          res.confirm && self.runBack()
-        }
-      })
+      this.triggerEvent('back');
     },
     runBack(){
       let pages = getCurrentPages();
@@ -189,18 +170,11 @@ Component({
      * 返回首页
      */
     navigateBackHome(){
-      let self = this;
-      if (!self.properties.backConfirm) {
-        self.runBackHome();
+      if (!this.properties.backHomeEvent) {
+        this.runBackHome();
         return;
       }
-      wx.showModal({
-        title: self.properties.backConfirmTitle,
-        content: self.properties.backConfirmContent,
-        success(res) {
-          res.confirm && self.runBackHome()
-        }
-      })
+      this.triggerEvent('backHome');
     },
     runBackHome() {
       let pages = getCurrentPages();

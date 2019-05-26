@@ -6,7 +6,8 @@
   	<button style="margin-top:20rpx;width:500rpx" bindtap="shareEnter">模拟非首页启动小程序</button>
   	<navigator url="/example/child?nofixed=1"><button style="margin-top:20rpx;width:500rpx">不置顶跟随页面滚动</button></navigator>
     <navigator url="/example/child?toggleBarShow=1"><button style="margin-top:20rpx;width:500rpx">滚动30像素切换显示隐藏</button></navigator>
-  	<navigator url="/example/child?backConfirm=1"><button style="margin-top:20rpx;width:500rpx">返回页面前弹窗确认</button></navigator>
+  	<navigator url="/example/child?backEvent=1"><button style="margin-top:20rpx;width:500rpx">监听返回按钮事件</button></navigator>
+  	<navigator url="/example/child?backHomeEvent=1"><button style="margin-top:20rpx;width:500rpx">监听返回首页按钮事件</button></navigator>
   	<navigator url="/example/child?backStyle=simple"><button style="margin-top:20rpx;width:500rpx">简单风格的返回按钮</button></navigator>
   </view>
 </view>
