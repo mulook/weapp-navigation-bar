@@ -47,7 +47,7 @@ app.json配置以下属性
 如果已了解，可直接把组件拷贝到项目里引用，用法可参考example。
 > 额外说明：小程序右上角胶囊颜色，可通过navigationBarTextStyle设置，支持black和white。
 > 为了提高兼容性，建议把所有页面内容写在设置的页面容器里，参考example。
-## 组件自定义方法
+## 组件内部自定义方法
 > toggleShow()/toggleHide()用于切换自定义导航栏的显示/隐藏。
 ## 组件自定义属性说明
 | 属性          | 说明                        | 类型    | 默认值      |
@@ -62,3 +62,53 @@ app.json配置以下属性
 | backStyle     | 导航栏返回按钮的风格支持simple和normal| String  | normal |
 | backEvent   | 是否绑定返回按钮事件      | Boolean | false       |
 | backHomeEvent   | 是否绑定返回首页按钮事件      | Boolean | false       |
+## 组件外部绑定事件说明
+> 绑定事件前，先打开事件监听属性backEvent="{{true}}"，然后使用bind:事件名="callback"来绑定回调函数
+
+| 事件名         | 说明                        | 事件是否冒泡    | 事件是否拥有捕获阶段      |
+| ------------- | ---------------------------  | ------- | ----------- |
+| back          | 返回按钮被点击                | 否  | 否        |
+| backHome      | 返回首页按钮被点击             | 否  | 否     |
+
+>绑定事件参考
+
+>wxml
+``` html
+<navigationBar id="navigationBar"  backEvent="{{true}}" bind:back="backEvent"  backHomeEvent="{{true}}" bind:backHome="backHomeEvent"></navigationBar>
+```
+>js
+``` js
+Page({
+  /**
+   * 返回按钮触发事件
+   * @param {Object} e 事件对象
+   */
+  backEvent(e){
+    // 这里可以写点击返回按钮相关的业务逻辑，下面逻辑提供参考
+    let self = this;
+    wx.showModal({
+      title: '提示，触发返回按钮事件',
+      content: '确定要退出当前页面吗？',
+      success(res) {
+        res.confirm && self.selectComponent('#navigationBar').runBack();//这里之所以调用了组件内部的返回上一页的方法，因为里面有判断逻辑，不想调用可以自行处理
+      }
+    })
+  },
+  /**
+   * 返回按钮触发事件
+   * @param {Object} e 事件对象
+   */
+  backHomeEvent(e) {
+    // 这里可以写点击返回首页按钮相关的业务逻辑，下面逻辑提供参考
+    let self = this;
+    wx.showModal({
+      title: '提示，触发返回首页按钮事件',
+      content: '确定要退出当前页面吗？',
+      success(res) {
+        res.confirm && self.selectComponent('#navigationBar').runBackHome();//这里之所以调用了组件内部的返回首页的方法，因为里面有判断逻辑，不想调用可以自行处理
+      }
+    })
+  }
+});
+
+```
